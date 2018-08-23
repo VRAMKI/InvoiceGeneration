@@ -210,7 +210,7 @@ clone = tbody.rows[0].cloneNode(true);
 
 
 
-<title>Insert title here</title>
+<title>INVOICE </title>
 </head>
 <body>
 	<s:form action="geninvoice" method="post">
