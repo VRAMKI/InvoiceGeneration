@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD  
+Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.ui.theme" value="simple" />
+	
+	<package name="default" extends="struts-default,json-default">
+	<!-- =========================firm jsp page ============================= -->
+		<action name="addfirms">
+			<result name="success">/WEB-INF/jsps/firm.jsp</result>
+		</action>
+		
+		<!-- =========================saving firm fields============================= -->
+		<action name="firmfields" class="com.struts.invoicegen.action.CompanyAction" method="cmpfields">
+		<result name="success">index.jsp</result>
+		</action>
+		
+			
+		<!-- =========================going to gst page ============================= -->
+		<action name="addNewGstPer" class="com.struts.invoicegen.action.GstPercentageAction" method="fetchGstfields">
+		<result name="success">WEB-INF/jsps/gstpercentage.jsp</result>
+		</action>
+		
+		<!-- =========================adding new gst fields============================= -->
+		<action name="gstpercentage" class="com.struts.invoicegen.action.GstPercentageAction" method="gstPercentage">
+		<result name="success">index.jsp</result>
+		</action>
+		
+		<!-- =========================updating gst fields============================= -->
+		<action name="updateactivegst" class="com.struts.invoicegen.action.GstPercentageAction" method="updategstPercentage">
+		<result name="success">index.jsp</result>
+		</action>
+		
+		
+		<!-- =========================saving and fetching Invoice fields============================= -->
+		<action name="geninvoice" class="com.struts.invoicegen.action.TaxInvoice" method="invoiceFields">
+		<result name="success">/WEB-INF/jsps/invoicesfetch.jsp</result>
+		<result name="error">/WEB-INF/jsps/error.jsp</result>
+		<result name="input">/WEB-INF/jsps/error.jsp</result>
+		<result name="invalid.token">/WEB-INF/jsps/tokenerror.jsp</result>
+		</action>
+		
+		
+		<!-- =========================fetching Invoice fields============================= -->
+		<action name="ViewInvoice" class="com.struts.invoicegen.action.TaxInvoice" method="fetchinvoiceFields">
+		<result name="success">/WEB-INF/jsps/invoicesfetch.jsp</result>
+		<result name="invalid.token">/WEB-INF/jsps/tokenerror.jsp</result>
+		</action>
+		
+		<!-- ====================== generating pdf ======================================================== -->
+		<action name="download" class="com.struts.invoicegen.action.InvoicePdfGen"
+			method="geninvoicepdf">
+			<result name="success">/WEB-INF/jsps/pdf.jsp</result>
+			<result name="error">/WEB-INF/jsps/pdferr.jsp</result>
+		</action>
+		
+		<!-- =========================address  jsp page and retriving firm list in select box============================= -->
+		<action name="addaddress" class="com.struts.invoicegen.action.CompanyAction" method="fetchcompanyname">
+			<result name="success">/WEB-INF/jsps/addressmst.jsp</result>
+		</action>
+		
+		
+		<!-- =========================bank jsp page and retriving firm list in select box============================= -->
+		<action name="addBank" class="com.struts.invoicegen.action.CompanyAction" method="fetchcompanyname">
+			<result name="success">/WEB-INF/jsps/bankDetails.jsp</result>
+		</action>
+		
+		<!-- =========================index page retriving firm list in select service by box============================= -->
+	
+		<action name="getServByCmpyList" class="com.struts.invoicegen.action.CompanyAction" method="fetchcompanyname">
+			<result type="stream">
+    		<param name="contentType">text/html</param>
+   			 <param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- =========================index page retriving firm list in select service to box============================= -->
+		<action name="getServToCmpyList" class="com.struts.invoicegen.action.CompanyAction" method="fetchcompanyname">
+			<result type="stream">
+    		<param name="contentType">text/html</param>
+   			 <param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		
+		<!-- ===========================address retriving based on service by selection==================================== -->
+			<action name="getServByAddList" class="com.struts.invoicegen.action.AddressAction" method="fetchAddress">
+			<result type="stream">
+    		<param name="contentType">text/html</param>
+   			 <param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		
+		<!-- ===========================address retriving based on service To selection==================================== -->
+			<action name="getServToAddList" class="com.struts.invoicegen.action.AddressAction" method="fetchAddress">
+			<result type="stream">
+    		<param name="contentType">text/html</param>
+   			 <param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<!-- ===========================BAnk retriving based on service by selection==================================== -->
+			<action name="getServByBnkList" class="com.struts.invoicegen.action.BankAction" method="fetchBank">
+			<result type="stream">
+    		<param name="contentType">text/html</param>
+   			 <param name="inputName">inputStream</param>
+			</result>
+		</action>
+		
+		<!-- =========================bank  jsp page fields saving============================= -->
+		<action name="bankForm" class="com.struts.invoicegen.action.BankAction" method="bankFields">
+			<result name="success">/WEB-INF/jsps/success.jsp</result>
+		</action>
+		<!-- =========================address  jsp page fields saving============================= -->
+		<action name="addressform" class="com.struts.invoicegen.action.AddressAction" method="addressFields">
+			<result name="success">/WEB-INF/jsps/success.jsp</result>
+		</action>
+		
+		<!-- =========================Go back to home ============================= -->
+		<action name="gotohome">
+			<result name="success">index.jsp</result>
+		</action>
+		
+		
+	</package>
+</struts>

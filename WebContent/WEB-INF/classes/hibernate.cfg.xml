@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC  
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"  
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/invoicegeneration</property>
+		<property name="connection.user">root</property>
+		<property name="connection.password"></property>
+
+		<property name="show_sql">true</property>
+		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hbm2ddl.auto">update</property>
+		
+		
+		<mapping class="com.struts.invoicegen.dao.CompanyDao" />
+		<mapping class="com.struts.invoicegen.dao.AddressDao" />
+		<mapping class="com.struts.invoicegen.dao.BankDetailsDao" />
+		<mapping class="com.struts.invoicegen.dao.TaxInvoiceDao" />
+		<mapping class="com.struts.invoicegen.dao.ServicesDao" />
+		<mapping class="com.struts.invoicegen.dao.TaxDetailsDao" />
+		<mapping class="com.struts.invoicegen.dao.GstPercentageDao" />
+	</session-factory>
+</hibernate-configuration>
