@@ -199,8 +199,25 @@ clone = tbody.rows[0].cloneNode(true);
 
 	</script>
 	
+	<script type="text/javascript">
+	
+	$(function () {
+	    $(".datepick").datepicker({
+	        changeMonth: true,
+	        changeYear: true,     
+	        dateFormat: 'dd/mm/yy'
+	    });
+	});
 	
 	
+	
+	
+	</script>
+	
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 
 
@@ -222,7 +239,8 @@ clone = tbody.rows[0].cloneNode(true);
 			<tr>
 					<td>Invoice Date</td>
 					<td>&emsp;:&emsp;</td>
-					<td><s:textfield name="invoiceDate"></s:textfield></td>
+					<td><input type="text" name ="invoiceDate" id ="invoiceDate" class="datepick"></td>
+					<%-- <td><s:textfield name="invoiceDate" id="invoiceDate" class="datepick"></s:textfield></td> --%>
 					<td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
 					<td></td>
 				</tr>
@@ -367,20 +385,15 @@ clone = tbody.rows[0].cloneNode(true);
 			</tr>
 			</table>
 			
-			
-			
-			
-			
-			
-			
-			
+	
 			
 			
 			
 			
 			
 		</fieldset>
-		<s:submit value="Save Invoice"></s:submit>
+		<input type="button" name="submit" id="submit" value="Save Invoice">
+		<s:submit value=" struts Save Invoice"></s:submit>
 		<s:a href="ViewInvoice">View Invoices</s:a>
 	</s:form>
 </body>

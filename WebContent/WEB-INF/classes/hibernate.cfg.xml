@@ -21,5 +21,9 @@
 		<mapping class="com.struts.invoicegen.dao.ServicesDao" />
 		<mapping class="com.struts.invoicegen.dao.TaxDetailsDao" />
 		<mapping class="com.struts.invoicegen.dao.GstPercentageDao" />
+		
+		
+		<mapping class="com.struts.invoicegen.test.Pojo" />
+		
 	</session-factory>
 </hibernate-configuration>
