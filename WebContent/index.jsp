@@ -24,6 +24,10 @@ $(document).ready(function(){
         $("#serviceByAddCmp").append("<option value='" + s1 + "'>"+ s2 +"</option>");
         $("#serviceByBank").get(0).options.length = 0;
         $("#serviceByBank").append("<option value='" + s1 + "'>"+ s2 +"</option>");
+        $("#serviceToCmp").get(0).options.length = 0;
+        $("#serviceToCmp").append("<option value='" + s1 + "'>"+ s2 +"</option>");
+        $("#serviceToAddCmp").get(0).options.length = 0;
+        $("#serviceToAddCmp").append("<option value='" + s1 + "'>"+ s2 +"</option>");
 	    $("#serviceByCmp").append("<option value='" + s1 + "'>"+ s2 +"</option>");
 	    $("#serviceByCmp").html(result);
 	     
@@ -218,7 +222,7 @@ clone = tbody.rows[0].cloneNode(true);
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<script src="javaScript/validatealphabet.js"></script>
 
 
 <!-- ========================================================================================================= -->
@@ -230,7 +234,7 @@ clone = tbody.rows[0].cloneNode(true);
 <title>INVOICE </title>
 </head>
 <body>
-	<s:form action="geninvoice" method="post">
+	<s:form action="geninvoice" method="post" name="invoiceFormFields">
 	<s:token></s:token>
 		<fieldset>
 			<legend>Firms</legend>
@@ -290,7 +294,7 @@ clone = tbody.rows[0].cloneNode(true);
 				<tr>
 					<td>Place Of Supply</td>
 					<td>&emsp;:&emsp;</td>
-					<td><s:textfield name="invoicePlcofsupply"></s:textfield></td>
+					<td><s:textfield name="invoicePlcofsupply" id="invoicePlcofsupply" onkeypress="return validAlphabet(event)"></s:textfield></td>
 					<td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
 					<td></td>
 				</tr>
@@ -300,7 +304,7 @@ clone = tbody.rows[0].cloneNode(true);
 				<tr>
 					<td>Order Ref Num</td>
 					<td>&emsp;:&emsp;</td>
-					<td><s:textfield name="invoiceOrderrefnum"></s:textfield></td>
+					<td><s:textfield name="invoiceOrderrefnum"  id="invoiceOrderrefnum" ></s:textfield></td>
 					<td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</td>
 					<td></td>
 				</tr>
@@ -392,7 +396,7 @@ clone = tbody.rows[0].cloneNode(true);
 			
 			
 		</fieldset>
-		<input type="button" name="submit" id="submit" value="Save Invoice">
+		<input type="button" name="submit" id="submit" value="Save Invoice" onclick="return validateInvoiceForm()">
 		<s:submit value=" struts Save Invoice"></s:submit>
 		<s:a href="ViewInvoice">View Invoices</s:a>
 	</s:form>

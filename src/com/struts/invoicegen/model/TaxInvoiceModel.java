@@ -126,6 +126,7 @@ public class TaxInvoiceModel {
 		
 		
 		for (TaxInvoiceDao taxInvoiceDao : taxInvoiceList) {
+			
 			TaxInvoiceServicesDto taxDto = new TaxInvoiceServicesDto();
 			taxDto.setValueAfterTax(taxInvoiceDao.getTaxDetailsObj().getValue_after_tax());
 			taxDto.setInvoice_num(taxInvoiceDao.getInvoice_num());
